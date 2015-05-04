@@ -1,0 +1,28 @@
+package pathfinding.test;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import pathfinding.Astar;
+import pathfinding.Map;
+import pathfinding.Node;
+
+public class TestAStar {
+	final static String FILE_NAME = "C:\\multichoice\\input.txt";
+	
+    public static void main(String[] args) {
+           Map map = new Map();
+           map = map.createMap(FILE_NAME);   
+           
+           Astar path = new Astar(); 
+           path.findShortestPath(map);
+           
+    }
+
+}

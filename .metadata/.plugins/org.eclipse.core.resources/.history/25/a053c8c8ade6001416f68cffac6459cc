@@ -1,0 +1,7 @@
+package javagame.cokeandcode;
+
+public interface Mover {
+
+
+	public int getType() ;
+}

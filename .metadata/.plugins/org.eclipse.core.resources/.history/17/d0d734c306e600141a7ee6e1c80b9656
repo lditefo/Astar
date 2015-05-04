@@ -1,0 +1,85 @@
+package pathfinding;
+
+import java.util.LinkedList;
+import java.util.List;
+
+
+public class Astar {
+	public static final int GOAL_X_VALUE = 4;	
+	public static final int GOAL_Y_VALUE = 4;
+	private double totalCost = 0.0;
+	private double score = 0.0;
+	
+	public List<Node> findShortestPath(Node startNode,Node endNode){
+		
+		LinkedList<Node> openList = new LinkedList<Node>();
+		LinkedList<Node> closedList = new LinkedList<Node>();
+        
+		openList.add(startNode);		  
+		startNode.parent = null;
+		  
+		while (!openList.isEmpty()) {
+		    Node currentNode = (Node)openList.removeFirst();
+		    if (currentNode == endNode) {
+		      // path found!
+		      return constructPath(endNode);
+		    }
+		    else {
+		      closedList.add(currentNode);
+		      openList.remove(currentNode);
+		      
+		      for (Node node : currentNode.getAdjacent()) {		       
+		        if (!closedList.contains(node) && !openList.contains(node)) 
+		        {
+		        	node.parent = node;
+		        	openList.add(node);
+		        	
+		        }
+		      }
+		    }
+		  }
+        //loop is over, return true
+        return null;
+       
+	}
+	
+	public void addToCost(Node nextNode){		
+		totalCost = totalCost +  nextNode.getCost();		
+	}
+	
+    public double calcManhattanDistance(Node start, Node end){
+        return Math.abs(start.getX() - end.getX()) + Math.abs(start.getY() - end.getY());
+    }
+    
+    public void calcScorePerTile(Node start){
+    	score = totalCost + calcManhattanDistance(start, );
+    	
+    }
+    
+   
+//    protected Double calculateF(Node note, T from, T to){
+//                    Double g =  g(from, to) + ((p.parent != null) ? note.parent.g : 0.0);
+//                    Double h = h(from, to);
+//
+//                    note.g = g;
+//                    note.f = g + h;
+//
+//                    return f;
+//    }
+
+	
+	/**
+    Construct the path, not including the start node.
+	 */
+	protected List<Node> constructPath(Node node) {
+		
+		LinkedList<Node> path = new LinkedList<Node>();		
+		while (node.parent != null) {
+			path.addFirst(node);
+			node = node.parent;
+		}		
+		return path;
+	}
+
+
+}

@@ -1,0 +1,71 @@
+package pathfinding;
+
+import java.util.List;
+
+public class Node implements Comparable<Node>{
+	
+	private int x;
+	private int y;	  
+	private float cost; 					
+	private float gCost; 			  
+	private float hCost;  	
+	  
+	Node parent;
+
+	public Node(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+	  
+	public int getX() {
+		return x;
+	}
+	
+	public void setX(int x) {
+		this.x = x;
+	}
+	
+	public int getY() {
+		return y;
+	}
+	
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public float getCost() {
+		return cost;
+	}
+
+	public void setCost(float cost) {
+		this.cost= cost;
+	}
+
+	public float getgCost() {
+		return gCost;
+	}
+
+	public void setgCost(float gCost) {
+		this.gCost = gCost;
+	}
+
+	public float gethCost() {
+		return hCost;
+	}
+
+	public void sethCost(float hCost) {
+		this.hCost = hCost;
+	}
+
+	public List<Node> getAdjacent() {
+		return null;
+	}
+
+	@Override
+	public int compareTo(Node arg0) {
+		// TODO Auto-generated method stub
+		return 0;
+	} 
+	
+}
+
